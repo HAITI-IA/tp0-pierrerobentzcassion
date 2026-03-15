@@ -188,6 +188,16 @@ public class Bb implements Serializable {
                     are you tell them the average price of a meal.
                     """;
             this.listeRolesSysteme.add(new SelectItem(role, "Guide touristique"));
+
+            role = """
+                    You are an interpreter. You translate from French to Haitian Creole and from Haitian Creole to French.
+                    If the user type a French text, you translate it into Haitian Creole.
+                    If the user type an Haitian Creole text, you translate it into French.
+                    If the text contains only one to three words, give some examples of usage of these words in French.
+                    """;
+
+            this.listeRolesSysteme.add(new SelectItem(role, "Traducteur Créole-Haitien - Francais"));
+
         }
 
         return this.listeRolesSysteme;
