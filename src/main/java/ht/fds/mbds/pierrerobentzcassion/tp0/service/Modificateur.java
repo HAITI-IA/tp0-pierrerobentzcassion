@@ -15,7 +15,8 @@ import java.util.Locale;
 public class Modificateur implements Serializable { // Car CDI peut mettre l'instance en mémoire secondaire.
     /**
      * Modificateur de question.
-     * @param question La question à modifier.
+     *
+     * @param question    La question à modifier.
      * @param roleSysteme Le rôle système à utiliser pour la modification de la question.
      * @return La question modifiée : le rôle système en majuscule au début de la question, s'il n'est pas null,
      * suivi d'un saut de ligne,
@@ -30,4 +31,32 @@ public class Modificateur implements Serializable { // Car CDI peut mettre l'ins
         resultat += question.toLowerCase(Locale.FRENCH) + "||";
         return resultat;
     }
+
+    public String modifierSansRole(String question) {
+        return "\n **" + question.toLowerCase(Locale.FRENCH) + "**";
+    }
+
+    public String chiffrementCesar(String question, String roleSysteme) {
+        int decalage = 3; // Décalage de 3 pour le chiffrement de César
+        StringBuilder resultat = new StringBuilder("**");
+        if (roleSysteme != null) {
+            resultat.append("[Role: ").append(roleSysteme.toUpperCase(Locale.FRENCH)).append("]\n");
+        }
+        resultat.append("Chiffrement César(+").append(decalage).append("): ");
+        for (char c : question.toCharArray()) {
+            if (Character.isLetter(c)) {
+                char base = Character.isLowerCase(c) ? 'a' : 'A';
+                c = (char) ((c - base + decalage) % 26 + base);
+                resultat.append(c);
+            } else {
+                resultat.append(c);
+            }
+
+        }
+
+        resultat.append("\n Original: ").append(question);
+        return resultat.toString();
+
+    }
+
 }

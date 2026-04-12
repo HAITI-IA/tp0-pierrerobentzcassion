@@ -135,12 +135,17 @@ public class Bb implements Serializable {
             // Invalide la liste pour changer le rôle système
             this.roleSystemeChangeable = false;
         }
-        this.reponse += this.modificateur.modifier(this.question, roleSystemePourModification);
+        this.reponse += this.modificateur.chiffrementCesar(this.question, this.roleSysteme);
 
         // La conversation contient l'historique des questions-réponses depuis le début.
         afficherConversation();
         return null;
     }
+
+    /**
+     * Implementation du nouveau traitement pour le bouton "Nouveau chat" : réinitialiser la conversation et les autres champs.
+     * 
+     */
 
     /**
      * Pour un nouveau chat.
