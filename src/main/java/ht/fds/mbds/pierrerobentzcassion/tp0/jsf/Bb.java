@@ -1,4 +1,4 @@
-package ht.fds.mbds.pierrerobentzcassion.tp0;
+package ht.fds.mbds.pierrerobentzcassion.tp0.jsf;
 
 
 import ht.fds.mbds.pierrerobentzcassion.tp0.service.Modificateur;
